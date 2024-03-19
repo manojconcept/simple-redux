@@ -1,8 +1,10 @@
 import React from "react";
 import { connect } from 'react-redux'
-import { updateName, updateAge, saveData } from "./Store/Actions/formAction";
+
+import { updateName, updateAge, saveData } from "./reducer/Actions/formAction";
 
 const App = ({name,age,updateAge,updateName,saveData,data}) => {
+
 	const nameField = (e) => {
 		updateName(e.target.value);
 	}
@@ -19,31 +21,37 @@ const App = ({name,age,updateAge,updateName,saveData,data}) => {
 		saveData(newData)
 	}
 	console.log(data)
+
 	return (
 		<>
+
 			<input
 				name="name"
 				type="text"
 				placeholder="type your name"
 				onChange={(e) => { nameField(e) }}
 			/>
+
 			<input
 				name="age"
 				type="number"
 				placeholder="type your age"
 				onChange={(e) => { ageField(e) }}
 			/>
-			<input onClick={saveButton} type="button" />
+
+			<input value="save" onClick={saveButton} type="button" />
 
 		</>
 	)
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state,prvalue) => {
+	console.log(state);
+	return {
 	name: state.myReducer.name,
 	age: state.myReducer.age,
-	data: state.myReducer.data,
-})
+	data: state.myReducer.data,}
+}
 
 const mapDispatchToProps = {
 	saveData,

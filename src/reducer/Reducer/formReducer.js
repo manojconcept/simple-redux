@@ -2,19 +2,24 @@ import * as actionTypes from '../Actions/actionTypes'
 
 
 const initialState = {
-    name:'',
-    age:0,
-    data:[],
+    name:'', //name
+    age:0, //age
+    data:[], // button
 }
 
-const reducer = (state = initialState,action)=>{
+const reducer = (state = initialState,action)=>{ //state,action
 
     switch (action.type) {
+
         case actionTypes.UPDATE_NAME:
         return{
-            ...state,
+            ...state,  
             name:action.payload
+
+
         }
+
+        // {name:"",age:0,data : [], name:action.payload} overwrite
 
         case actionTypes.UPDATE_AGE:
             return{
@@ -29,7 +34,7 @@ const reducer = (state = initialState,action)=>{
             }
 
         default:
-            return state;
+            return state; //error
 
     }
 }
